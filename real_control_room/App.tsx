@@ -4,7 +4,7 @@ import { CRTOverlay } from './components/CRTOverlay';
 import { Gauge } from './components/Gauge';
 import { Switch } from './components/Switch';
 import { SystemTerminal } from './components/SystemTerminal';
-import { NOZZLES, REQUIRED_ACTIVATIONS, MAX_STABILITY, DAMAGE_PENALTY } from './constants';
+import { NOZZLES, REQUIRED_ACTIVATIONS, MAX_STABILITY, DAMAGE_PENALTY, ACTIVATION_SEQUENCE } from './constants';
 import { GameState, SystemLog, NozzleType } from './types';
 
 export default function App() {
@@ -96,6 +96,22 @@ export default function App() {
       setErrorIds(prev => [...prev, id]);
       setPendingAuthNozzleId(null);
       return;
+    }
+
+    // SEQUENCE CHECK (Enforce Activation Order)
+    const sequenceIndex = ACTIVATION_SEQUENCE.indexOf(id);
+    if (sequenceIndex !== -1) {
+      // If it's not the first one, ensure the previous one is active
+      if (sequenceIndex > 0) {
+        const requiredPrevId = ACTIVATION_SEQUENCE[sequenceIndex - 1];
+        if (!activatedIds.includes(requiredPrevId)) {
+           const requiredNozzle = NOZZLES.find(n => n.id === requiredPrevId);
+           addLog(`SEQUENCE ERROR: PROTOCOL REQUIRES ${requiredNozzle?.label} ACTIVE FIRST.`, 'error');
+           setStability(prev => Math.max(0, prev - 2)); // Minor penalty for sequence violation
+           setErrorIds(prev => [...prev, id]);
+           return;
+        }
+      }
     }
 
     // LOCKED LOGIC (Previously Working)

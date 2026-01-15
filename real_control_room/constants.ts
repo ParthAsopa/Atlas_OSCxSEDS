@@ -3,6 +3,9 @@ import { NozzleType, NozzleData } from './types';
 // Total number of secure nozzles the user must unlock to win
 export const REQUIRED_ACTIVATIONS = 3;
 
+// The sequence of IDs that must be activated in order
+export const ACTIVATION_SEQUENCE = [2, 7, 10];
+
 export const NOZZLES: NozzleData[] = [
   { id: 1, label: "АЗ-5", type: NozzleType.BROKEN, x: 0, y: 0 },
   { id: 2, label: "НАСОС-1", type: NozzleType.WORKING, x: 1, y: 0, unlockCode: "PUMP-1" },
