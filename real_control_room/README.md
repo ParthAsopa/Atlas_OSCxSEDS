@@ -1,11 +1,11 @@
-# ☢️ ATLAS CTF: FINAL STAGE - REACTOR CONTROL 4
+# ☢️ ATLAS CTF: FINAL STAGE - REACTOR CONTROL
 
 > **WARNING: CRITICAL SYSTEM FAILURE DETECTED**  
 > **SECTOR 7G - RBMK-1000 CORE INTEGRITY: COMPROMISED**
 
 Welcome to the final stage of the **ATLAS CTF**, collaboratively organized by **OSC (Open Source Community)** and **SEDS (Students for the Exploration and Development of Space)**.
 
-This repository contains the source code for the "Reactor Control 4" challenge. Below is a detailed technical breakdown of how the application is structured, what the files do, and how the simulation logic operates.
+This repository contains the source code for the "PROJECT ATLAS – ORBITAL CASCADE" challenge. Below is a detailed technical breakdown of how the application is structured, what the files do, and how the simulation logic operates.
 
 ---
 
