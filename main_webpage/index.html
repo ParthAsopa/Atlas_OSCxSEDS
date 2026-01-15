@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CTF Terminal</title>
+
+  <!-- RSA KEY PLACEHOLDER -->
+  <meta name="rsa-public-key" content="">
+
+  <!-- CONNECT CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="terminal">
+
+    <pre>> initializing system...</pre>
+
+    <h1>CTF // OPERATION</h1>
+    <p id="countdown">Loading countdown...</p>
+
+    <button id="register-btn">[ REGISTER ACCESS ]</button>
+
+    <nav id="nav-bar" class="hidden">
+      <span data-section="mission">mission</span>
+      <span data-section="chat">chat</span>
+      <span data-section="control">control panel</span>
+    </nav>
+
+    <section id="mission" class="section hidden">
+      <pre>MISSION BRIEFING</pre>
+    </section>
+
+    <section id="chat" class="section hidden">
+      <div class="chat-box">
+        <div class="msg left">anyone solved challenge?</div>
+        <div class="msg right">check headers</div>
+      </div>
+    </section>
+
+    <section id="control" class="section hidden">
+      <pre>CONTROL PANEL</pre>
+    </section>
+
+  </div>
+
+  <!-- CONNECT JS (MUST BE AT BOTTOM) -->
+  <script src="script.js"></script>
+</body>
+</html>
