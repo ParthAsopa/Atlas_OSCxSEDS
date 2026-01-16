@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Signal Room</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #050b14;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00ff9c;
+}
+
+.terminal {
+    width: 92%;
+    max-width: 1200px;
+    height: 88vh;
+    background: linear-gradient(180deg, #0b1a2a, #060c16);
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid #1f2937;
+    position: relative;
+}
+
+/* TOP DOTS */
+.top-dots {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 7px;
+}
+
+.top-dots .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255,255,255,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-dots .dot:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px currentColor;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+/* CONTACT LIST */
+.contacts {
+    width: 25%;
+    border-right: 1px solid #1f2937;
+    padding: 15px;
+}
+
+.contact {
+    padding: 10px;
+    margin-bottom: 8px;
+    color: #6ee7b7;
+}
+
+.contact.active {
+    background: rgba(0, 255, 156, 0.1);
+    border-left: 3px solid #00ff9c;
+}
+
+/* CHAT */
+.chat-area {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid #1f2937;
+    color: #7dd3fc;
+    font-weight: bold;
+}
+
+/* MESSAGES */
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+
+.message {
+    margin-bottom: 14px;
+    max-width: 75%;
+}
+
+.received { color: #00ff9c; }
+.sent {
+    margin-left: auto;
+    color: #38bdf8;
+    text-align: right;
+}
+
+.system {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+/* IMAGE PLACEHOLDER */
+.image-placeholder {
+    margin: 25px auto;
+    width: 240px;
+    height: 160px;
+    border: 1px dashed #00ff9c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* IMAGE CLUE */
+.clue-box {
+    margin: 30px auto;
+    text-align: center;
+    padding: 15px;
+    border: 1px dashed #00ff9c;
+    width: 260px;
+}
+
+.clue-box img {
+    width: 220px;
+    height: 220px;
+    filter: blur(18px);
+    cursor: pointer;
+    transition: filter 1s ease;
+    border: 2px solid #00ff9c;
+}
+
+.clue-box img.revealed {
+    filter: blur(0);
+}
+
+.clue-text {
+    margin-top: 10px;
+    color: #ff4d4d;
+    display: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* SCROLLBAR */
+.messages::-webkit-scrollbar {
+    width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+    background: #1f2937;
+}
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+    <!-- TOP DOTS -->
+    <div class="top-dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+    </div>
+
+    <!-- CONTACTS -->
+    <div class="contacts">
+        <div class="contact active">Signal Room</div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-area">
+        <div class="chat-header">
+            Signal Room
+        </div>
+
+        <div class="messages" id="chatBox">
+            <div class="message system">[ Secure link established ]</div>
+            <div class="message received">Channel stable.</div>
+            <div class="message sent">Proceed.</div>
+
+            <div class="image-placeholder">
+                [ waiting for visual packet ]
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const chatBox = document.getElementById("chatBox");
+
+const conversation = [
+    { sender: "received", text: "Visual packet detected." },
+    { sender: "sent", text: "Decode when ready." },
+    { sender: "system", text: "[ low-noise transmission ]" }
+];
+
+let i = 0;
+
+function pushMessage() {
+    if (i >= conversation.length) return;
+
+    const msg = document.createElement("div");
+    msg.className = "message " + conversation[i].sender;
+    msg.textContent = conversation[i].text;
+
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    i++;
+}
+
+setInterval(pushMessage, 1500);
+
+setTimeout(() => {
+    const clue = document.createElement("div");
+    clue.className = "clue-box";
+    clue.innerHTML = `
+        <div class="system">[ IMAGE FRAME ]</div>
+        <img src="https://picsum.photos/400/400?random=7" id="clueImg">
+        <div class="clue-text" id="clueText">
+            ACCESS KEY:<br><span>ORBIT-47</span>
+        </div>
+    `;
+    chatBox.appendChild(clue);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    document.getElementById("clueImg").onclick = () => {
+        document.getElementById("clueImg").classList.add("revealed");
+        document.getElementById("clueText").style.display = "block";
+    };
+}, 6000);
+</script>
+
+</body>
+</html>
+
