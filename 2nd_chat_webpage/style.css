@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,0.4), #000),
+        url("background_img.jpg");
+    background-size: cover;
+    background-position: center;
+
+    min-height: 100vh;
+    overflow-y: auto;   /* ✅ scrollbar on right edge */
+    overflow-x: hidden;
+
+    color: #00ff66;
+}
+
+/* CRT scanlines */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,100,0.03),
+        rgba(0,255,100,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+}
+
+/* Subtle screen flicker */
+body {
+    animation: terminalFlicker 7s infinite;
+}
+
+@keyframes terminalFlicker {
+    0%, 100% { opacity: 1; }
+    96% { opacity: 0.97; }
+    97% { opacity: 0.9; }
+    98% { opacity: 1; }
+}
+
+/* Chat area */
+.chat-body {
+    width: 100%;
+    max-width: 700px;
+    padding: 40px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    overflow: visible;   /* ❌ no internal scrollbar */
+}
+
+/* Message box */
+.message {
+    max-width: 65%;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.85);
+}
+.message img {
+    width: 120px;                 /* small but visible */
+    max-width: 100%;
+    height: auto;
+
+    border: 1px dashed #00ff66;
+    padding: 4px;
+    display: block;
+    margin: 0 auto;
+
+    /* MUCH lighter effects */
+    filter: brightness(0.95) contrast(1.1);
+    animation: decrypt 1.2s ease-out forwards;
+}
+
+@keyframes decrypt {
+    from {
+        filter: brightness(0.6) contrast(0.9);
+    }
+    to {
+        filter: brightness(0.95) contrast(1.1);
+    }
+}
+
+.chat-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;   /* center horizontally */
+}
+
+.left {
+    align-self: flex-start;
+    margin-left: 10px;
+    border-left: 2px solid #00ff66;
+}
+
+.right {
+    align-self: flex-end;
+    margin-right: 10px;
+    border-right: 2px solid #00ff66;
+}
