@@ -10,23 +10,23 @@ export const News: React.FC<NewsProps> = ({ onBack }) => {
     {
       id: 'URGENT-01',
       date: '2025.05.12',
-      title: '31 ATLAS: PERIHELION LOCK CONFIRMED',
-      summary: 'Orbital mechanics indicate a successful perihelion lock. Comet 31 ATLAS has reached its maximum velocity relative to the sun. Tail length now exceeds 15 million kilometers.',
+      title: '3I ATLAS: PERIHELION LOCK CONFIRMED',
+      summary: 'Orbital mechanics indicate a successful perihelion lock. Comet 3I ATLAS has reached its maximum velocity relative to the sun. Tail length now exceeds 15 million kilometers.',
       tag: 'ORBITAL MECHANICS',
       status: 'CRITICAL'
     },
     {
       id: 'DATA-24',
       date: '2025.05.08',
-      title: 'SPECTRAL ANOMALY DETECTED IN 31 ATLAS COMA',
-      summary: 'Automated sensors on OSC-MAIN-01 have identified unusual neon signatures within the comet\'s inner coma. This suggests 31 ATLAS may have originated from a chemically distinct region of the outer Oort cloud.',
+      title: 'SPECTRAL ANOMALY DETECTED IN 3I ATLAS COMA',
+      summary: 'Automated sensors on OSC-MAIN-01 have identified unusual neon signatures within the comet\'s inner coma. This suggests 3I ATLAS may have originated from a chemically distinct region of the outer Oort cloud.',
       tag: 'SPECTROSCOPY',
       status: 'INVESTIGATING'
     },
     {
       id: 'UPLINK-09',
       date: '2025.05.01',
-      title: 'SEDS X OSC DEPLOYS TRACKING NODE FOR 31 ATLAS',
+      title: 'SEDS X OSC DEPLOYS TRACKING NODE FOR 3I ATLAS',
       summary: 'A joint collaboration has successfully launched the "ATLAS-SCAN-01" probe. High-resolution telemetry is now being streamed directly to the mission intelligence dashboard.',
       tag: 'MISSION LOGS',
       status: 'STABLE'
@@ -34,7 +34,7 @@ export const News: React.FC<NewsProps> = ({ onBack }) => {
     {
       id: 'INTEL-77',
       date: '2025.04.25',
-      title: 'FIRST IMAGERY OF 31 ATLAS NUCLEUS RELEASED',
+      title: 'FIRST IMAGERY OF 3I ATLAS NUCLEUS RELEASED',
       summary: 'De-noised imagery from the deep-space array reveals a highly irregular, binary-contact nucleus. Fragmentation risks remain at 12% for the upcoming sun-grazing phase.',
       tag: 'IMAGING',
       status: 'ARCHIVED'
