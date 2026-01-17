@@ -93,6 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate, currentV
                 </button>
                 
                 {/* Mission - Not a link, but a toggle */}
+                {false && (
                 <div className="flex flex-col gap-4">
                   <div 
                     onClick={toggleMission}
@@ -146,6 +147,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate, currentV
                     </div>
                   )}
                 </div>
+                )}
+                {/* </div> */}
               </nav>
 
               <div className="mt-auto pt-12 pb-6">

@@ -32,9 +32,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
       {/* Action Area - Refined Register Button */}
       <div className="relative z-10 -mt-16 px-4 pb-32 flex justify-center">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjUf9IeSVgsyTRhm9UEU3ilJm6L8pzoW36DzP2oOwEjxdIWQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">
         <button className="px-12 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-[12px] font-black uppercase tracking-[0.6em] rounded-full hover:from-cyan-400 hover:to-blue-500 hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] transition-all transform hover:-translate-y-1 active:scale-[0.98] shadow-xl border border-white/10">
           Register
         </button>
+        </a>
+        {/* </a> */}
       </div>
     </section>
   );
