@@ -1,0 +1,8 @@
+name: Remote Deploy
+on: [push] # Triggers whenever anyone pushes
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel
+        run: curl -X POST ${{ secrets.VERCEL_TEAM_COLLAB }}
