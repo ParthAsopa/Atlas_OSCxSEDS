@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-deep: #020c1b;
@@ -16,23 +18,66 @@
             --accent-green: #4ade80;
             --accent-rust: #f97316;
         }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .custom-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Ensure backdrop-blur-xl is supported */
+        .backdrop-blur-xl {
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        /* Custom nav background with transparency */
+        .nav-glass {
+            background-color: rgba(255, 255, 255, 0.2);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        /* Smooth scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-deep);
             color: #e2e8f0;
             overflow-x: hidden;
         }
+
         .font-mono {
             font-family: 'Space+Mono', monospace;
         }
+
         .glass {
             background: rgba(10, 25, 47, 0.7);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 242, 255, 0.1);
         }
-        .text-cyan { color: var(--accent-cyan); }
-        .border-cyan { border-color: rgba(0, 242, 255, 0.3); }
-        
+
+        .text-cyan {
+            color: var(--accent-cyan);
+        }
+
+        .border-cyan {
+            border-color: rgba(0, 242, 255, 0.3);
+        }
+
         .typewriter {
             display: inline-block;
             overflow: hidden;
@@ -40,33 +85,51 @@
             white-space: nowrap;
             margin: 0 auto;
             letter-spacing: .05em;
-            animation: 
+            animation:
                 typing 3.5s steps(40, end),
                 blink-caret .75s step-end infinite;
         }
+
         @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
         }
+
         @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-cyan); }
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent-cyan);
+            }
         }
+
         ::-webkit-scrollbar {
             width: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: #010811;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #112240;
             border-radius: 3px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-cyan);
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -76,10 +139,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
+
 <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
@@ -13,20 +12,25 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // Updates the state to true if the user scrolls more than 20px
+      // This threshold matches the blur activation point
+      setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavigate = (newView: 'home' | 'gallery' | 'news' | 'forbidden') => {
     setView(newView);
+    // Standard behavior to reset page view on navigation
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-300 selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-[#020617] text-slate-300 selection:bg-cyan-500/30 overflow-x-hidden">
       <div className="relative z-10">
+        {/* Pass the scroll state to the Navbar to trigger the blur effect */}
         <Navbar isScrolled={scrolled} onNavigate={handleNavigate} currentView={view} />
         
         <main className="transition-all duration-500">
@@ -52,6 +56,7 @@ const App: React.FC = () => {
           )}
         </main>
 
+        {/* The footer is hidden on the 'forbidden' page for a cleaner terminal look */}
         {view !== 'forbidden' && <Footer />}
       </div>
     </div>
