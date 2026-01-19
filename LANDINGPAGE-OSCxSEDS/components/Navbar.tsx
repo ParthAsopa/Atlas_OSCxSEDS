@@ -95,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate, currentV
           </button>
           
           {/* Mission Toggle Section */}
-          {/* <div className="flex flex-col gap-4">
+          { <div className="flex flex-col gap-4">
             <div 
               onClick={toggleMission}
               className="flex items-center justify-between cursor-pointer group"
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate, currentV
                 </div>
               </div>
             )}
-          </div> */}
+          </div> }
         </nav>
 
         <div className="mt-auto pt-12 pb-6">
