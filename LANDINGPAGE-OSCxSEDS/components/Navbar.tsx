@@ -135,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled, onNavigate, currentV
 
                   {isVanguardOpen && (
                     <div className="ml-4 border-l border-white/5 pl-6 flex flex-col gap-4 animate-in slide-in-from-left-4 duration-300">
-                      <a href="/chat_webpage/index.html" target="_blank" rel="noopener noreferrer">
+                      <a href="http://4.186.29.80:8008/" target="_blank" rel="noopener noreferrer">
                       <button className="text-left text-[11px] font-bold text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-[0.3em]">
                         Chat
                         </button>
